@@ -18,7 +18,7 @@ public interface Quality {
      * @param value
      *            integer by which the quality should be increased.
      */
-    void increase(int value);
+    void increaseBy(int value);
 
     void increase();
 

@@ -218,7 +218,7 @@ public class NormalItemTest {
 		int value = random.nextInt();
 		
 		// When
-		item.quality.increase(value);
+		item.quality.increaseBy(value);
 		int actualQuality = item.getQuality();
 		
 		// Then

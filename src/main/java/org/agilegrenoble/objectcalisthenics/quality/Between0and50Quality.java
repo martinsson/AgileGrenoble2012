@@ -27,7 +27,7 @@ public class Between0and50Quality implements Quality {
     /* (non-Javadoc)
      * @see org.agilegrenoble.objectcalisthenics.quality.Quality#increase(int)
      */
-    public void increase(int value) {
+    public void increaseBy(int value) {
         if (quality < 50)
             quality += value;
     }
@@ -36,7 +36,7 @@ public class Between0and50Quality implements Quality {
      * @see org.agilegrenoble.objectcalisthenics.quality.Quality#increase()
      */
     public void increase() {
-        increase(1);
+        increaseBy(1);
     }
     
     /* (non-Javadoc)
