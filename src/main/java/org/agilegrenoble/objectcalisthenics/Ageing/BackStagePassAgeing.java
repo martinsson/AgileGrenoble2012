@@ -10,13 +10,13 @@ public class BackStagePassAgeing extends Ageing {
 
     public void advanceOneDay(Quality quality) {
         if (daysBefore > 10) 
-            quality.increaseBy(3);
+            quality.increaseBy(1);
         
         else if (daysBefore > 5) 
             quality.increaseBy(2);
         
         else if (daysBefore > 0) 
-            quality.increaseBy(1);
+            quality.increaseBy(3);
         
         else 
             quality.resetToZero();
