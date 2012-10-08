@@ -9,18 +9,16 @@ public class BackStagePassAgeing extends Ageing {
     }
 
     public void advanceOneDay(Quality quality) {
-        quality.increase();
-    
-        if (daysBefore < 11) {
+        if (daysBefore > 10) {
+            quality.increase(3);
+        
+        } else if (daysBefore > 5) {
+            quality.increase(2);
+        
+        } else if (daysBefore > 0) {
             quality.increase();
-        }
-    
-        if (daysBefore < 6) {
-            quality.increase();
-        }
-    
-    
-        if (isPastDaysBefore()) {
+        
+        } else {
             quality.resetToZero();
         }
         
