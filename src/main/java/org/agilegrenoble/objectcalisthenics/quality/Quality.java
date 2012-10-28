@@ -1,5 +1,7 @@
 package org.agilegrenoble.objectcalisthenics.quality;
 
+import org.hamcrest.Matcher;
+
 public interface Quality {
 
     int getQuality();
@@ -29,8 +31,13 @@ public interface Quality {
      */
     void resetToZero();
 
-    void increaseBy(int i, boolean when);
+    PotentialUpdater doIncreaseBy(int i);
 
-    void resetToZero(boolean when);
+    PotentialUpdater doResetToZero();
 
+    interface PotentialUpdater {
+
+        void when(int daysBefore, Matcher<Integer> matches);
+        
+    }
 }

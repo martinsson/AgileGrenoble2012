@@ -1,5 +1,7 @@
 package org.agilegrenoble.objectcalisthenics.quality;
 
+import org.hamcrest.Matcher;
+
 public class Between0and50Quality implements Quality {
 
     protected int quality;
@@ -55,17 +57,30 @@ public class Between0and50Quality implements Quality {
 
 
     @Override
-    public void increaseBy(int i, boolean when) {
-        if (when)
-            increaseBy(i);
+    public PotentialUpdater doIncreaseBy(final int amount) {
+        final Quality q = this; //trick!
+        return new PotentialUpdater(){
+            @Override
+            public void when(int daysBefore, Matcher<Integer> matcher) {
+                if (matcher.matches(daysBefore))
+                    q.increaseBy(amount);
+            }
+            
+        };
     }
 
 
     @Override
-    public void resetToZero(boolean when) {
-        if (when)
-            resetToZero();
+    public PotentialUpdater doResetToZero() {
+        final Quality q = this; 
+        return new PotentialUpdater(){
+            @Override
+            public void when(int daysBefore, Matcher<Integer> matcher) {
+                if (matcher.matches(daysBefore))
+                    q.resetToZero();
+            }
+            
+        };
     }
     
-
 }
