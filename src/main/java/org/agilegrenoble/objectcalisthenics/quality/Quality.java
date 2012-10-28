@@ -29,4 +29,8 @@ public interface Quality {
      */
     void resetToZero();
 
+    void increaseBy(int i, boolean when);
+
+    void resetToZero(boolean when);
+
 }

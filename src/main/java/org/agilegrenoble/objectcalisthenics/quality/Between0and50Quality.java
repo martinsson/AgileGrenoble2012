@@ -52,6 +52,20 @@ public class Between0and50Quality implements Quality {
     public void resetToZero() {
         quality = 0;
     }
+
+
+    @Override
+    public void increaseBy(int i, boolean when) {
+        if (when)
+            increaseBy(i);
+    }
+
+
+    @Override
+    public void resetToZero(boolean when) {
+        if (when)
+            resetToZero();
+    }
     
 
 }
