@@ -35,9 +35,13 @@ public interface Quality {
 
     PotentialUpdater doResetToZero();
 
-    interface PotentialUpdater {
+    abstract class PotentialUpdater {
 
-        void when(int daysBefore, Matcher<Integer> matches);
+        public void when(int daysBefore, Matcher<Integer> matcher) {
+            if (matcher.matches(daysBefore))
+                doUpdate();
+        }
         
+        abstract void doUpdate();
     }
 }

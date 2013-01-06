@@ -61,11 +61,9 @@ public class Between0and50Quality implements Quality {
         final Quality q = this; //trick!
         return new PotentialUpdater(){
             @Override
-            public void when(int daysBefore, Matcher<Integer> matcher) {
-                if (matcher.matches(daysBefore))
-                    q.increaseBy(amount);
+            void doUpdate() {
+                q.increaseBy(amount);
             }
-            
         };
     }
 
@@ -75,11 +73,9 @@ public class Between0and50Quality implements Quality {
         final Quality q = this; 
         return new PotentialUpdater(){
             @Override
-            public void when(int daysBefore, Matcher<Integer> matcher) {
-                if (matcher.matches(daysBefore))
-                    q.resetToZero();
+            void doUpdate() {
+                q.resetToZero();
             }
-            
         };
     }
     
