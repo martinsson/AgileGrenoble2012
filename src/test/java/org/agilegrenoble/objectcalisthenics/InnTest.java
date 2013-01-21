@@ -50,13 +50,20 @@ public class InnTest {
     
     @Test public void 
     backstage_pass() throws Exception {
-        Item backstagePass = new Item(Inn.BACKSTAGE_PASS, 40, 50);
-        Inn inn = new Inn(asList(backstagePass ));
+        int quality = 50;
+        int sellIn = 40;
+        Item backstagePass = makeBackstagePass(quality, sellIn);
+        Inn inn = new Inn(asList(backstagePass, makeBackstagePass(30, 25) ));
         inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
-        assertThat(qualities).containsOnly(50);
+        assertThat(qualities).containsOnly(quality, 31);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-        assertThat(sellIns).containsOnly(39);
+        assertThat(sellIns).containsOnly(39, 24);
+    }
+
+    private Item makeBackstagePass(int quality, int sellIn) {
+        Item backstagePass = new Item(Inn.BACKSTAGE_PASS, sellIn, quality);
+        return backstagePass;
     }
 
 }
