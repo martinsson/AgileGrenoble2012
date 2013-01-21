@@ -1,6 +1,7 @@
 package org.agilegrenoble.objectcalisthenics;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.extractProperty;
 
 import org.junit.Test;
 
@@ -9,6 +10,8 @@ public class InnTest {
     testname() throws Exception {
         Inn inn = Main.makeInn();
         inn.updateQuality();
-        assertThat(inn.getItems()).isNotNull();
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+        assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
     }
+
 }
