@@ -33,9 +33,7 @@ public class Item {
             setSellIn(getSellIn() - 1);
         }
         
-        if ("Aged Brie".equals(getName()))
-            quality.increase();
-        else if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
+        if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
             quality.increase();
 
             if (getSellIn() < 10) {
@@ -45,21 +43,23 @@ public class Item {
             if (getSellIn() < 5) {
                 quality.increase();
             }
-        } else if ("Sulfuras, Hand of Ragnaros".equals(getName())) {
+            if (getSellIn() < 0) {
+                quality.resetToZero();
+            }
+        } else {
+            doUpdate();
+            if (getSellIn() < 0) {
+                doUpdate();
+            }
+        }
+    }
+
+    private void doUpdate() {
+        if ("Aged Brie".equals(getName()))
+            quality.increase();
+        else if ("Sulfuras, Hand of Ragnaros".equals(getName())) {
         } else {
             quality.decrease();
-        }
-
-
-        if (getSellIn() < 0) {
-            if ("Aged Brie".equals(getName()))
-                quality.increase();
-            else if ("Backstage passes to a TAFKAL80ETC concert".equals(getName()))
-                quality.resetToZero();
-            else if ("Sulfuras, Hand of Ragnaros".equals(getName())) {
-            } else {
-                quality.decrease();
-            }
         }
     }
 }
