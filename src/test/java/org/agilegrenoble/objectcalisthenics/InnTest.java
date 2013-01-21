@@ -20,18 +20,18 @@ public class InnTest {
     public void setup() {
         inn = Main.makeInn();
     }
-
-    @Test
-    public void after_one_day() throws Exception {
+    
+    @Test public void 
+    after_one_day() throws Exception {
         inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
         assertThat(sellIns).containsOnly(9, 1, 4, 0, 14, 2);
     }
-
-    @Test
-    public void after_three_days() throws Exception {
+    
+    @Test public void 
+    after_three_days() throws Exception {
         inn.updateQuality();
         inn.updateQuality();
         inn.updateQuality();
@@ -40,22 +40,21 @@ public class InnTest {
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
         assertThat(sellIns).containsOnly(7, -1, 2, 0, 12, 0);
     }
-
-    @Test
-    public void after_a_shitload_of_days() throws Exception {
-        for (int i = 0; i < 500; i++) {
+    
+    @Test public void 
+    after_a_shitload_of_days() throws Exception {
+         for (int i = 0; i < 500; i++) {
             inn.updateQuality();
         }
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
-        assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-        assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
+         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+         assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
+         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+         assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
     }
-
+    
     Random rand = new Random(3456789);
-
-    @Test
-    public void backstage_pass() throws Exception {
+    @Test public void 
+    backstage_pass() throws Exception {
         Inn inn = innWithABunchOfBackstagePasses();
         updateQualityManyTimes(inn);
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
@@ -79,7 +78,8 @@ public class InnTest {
         for (int i = 0; i < 100; i++) {
             listOfPasses.add(makeBackstagePass(quality(), sellIn()));
         }
-        return new Inn(listOfPasses);
+        Inn inn = new Inn(listOfPasses);
+        return inn;
     }
 
     private int sellIn() {
