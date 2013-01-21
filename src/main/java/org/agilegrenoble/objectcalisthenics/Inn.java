@@ -4,7 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class Inn {
-	private List<Item> items;
+	public static final String BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
+    private List<Item> items;
 
 	public Inn(List<Item> initialItems) {
 		items = initialItems;
@@ -16,7 +17,7 @@ public class Inn {
 					&& !items
 							.get(i)
 							.getName()
-							.equals("Backstage passes to a TAFKAL80ETC concert")) {
+							.equals(BACKSTAGE_PASS)) {
 				if (items.get(i).getQuality() > 0) {
 					if (!items.get(i).getName()
 							.equals("Sulfuras, Hand of Ragnaros")) {
@@ -30,7 +31,7 @@ public class Inn {
 					if (items
 							.get(i)
 							.getName()
-							.equals("Backstage passes to a TAFKAL80ETC concert")) {
+							.equals(BACKSTAGE_PASS)) {
 						if (items.get(i).getSellIn() < 11) {
 							if (items.get(i).getQuality() < 50) {
 								items.get(i).setQuality(
@@ -57,7 +58,7 @@ public class Inn {
 					if (!items
 							.get(i)
 							.getName()
-							.equals("Backstage passes to a TAFKAL80ETC concert")) {
+							.equals(BACKSTAGE_PASS)) {
 						if (items.get(i).getQuality() > 0) {
 							if (!items.get(i).getName()
 									.equals("Sulfuras, Hand of Ragnaros")) {

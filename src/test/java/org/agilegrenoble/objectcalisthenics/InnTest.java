@@ -1,8 +1,10 @@
 package org.agilegrenoble.objectcalisthenics;
 
+import static java.util.Arrays.asList;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.fest.assertions.api.Assertions.extractProperty;
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.isNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +46,13 @@ public class InnTest {
          assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
          Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
          assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
+    }
+    
+    @Test public void 
+    backstage_pass() throws Exception {
+        Item backstagePass = new Item(Inn.BACKSTAGE_PASS, 40, 50);
+        Inn inn2 = new Inn(asList(backstagePass ));
+        assertThat(inn2).isNotNull();
     }
 
 }
