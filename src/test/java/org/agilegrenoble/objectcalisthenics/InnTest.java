@@ -7,9 +7,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class InnTest {
+    private Inn inn;
+
     @Test public void 
     after_one_day() throws Exception {
-        Inn inn = Main.makeInn();
+        inn = Main.makeInn();
         inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
@@ -19,7 +21,7 @@ public class InnTest {
     
     @Test public void 
     after_three_days() throws Exception {
-        Inn inn = Main.makeInn();
+        inn = Main.makeInn();
         inn.updateQuality();
         inn.updateQuality();
         inn.updateQuality();
