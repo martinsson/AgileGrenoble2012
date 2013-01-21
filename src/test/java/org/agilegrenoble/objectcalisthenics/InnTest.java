@@ -20,18 +20,18 @@ public class InnTest {
     public void setup() {
         inn = Main.makeInn();
     }
-    
-    @Test public void 
-    after_one_day() throws Exception {
+
+    @Test
+    public void after_one_day() throws Exception {
         inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
         assertThat(sellIns).containsOnly(9, 1, 4, 0, 14, 2);
     }
-    
-    @Test public void 
-    after_three_days() throws Exception {
+
+    @Test
+    public void after_three_days() throws Exception {
         inn.updateQuality();
         inn.updateQuality();
         inn.updateQuality();
@@ -40,36 +40,46 @@ public class InnTest {
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
         assertThat(sellIns).containsOnly(7, -1, 2, 0, 12, 0);
     }
-    
-    @Test public void 
-    after_a_shitload_of_days() throws Exception {
-         for (int i = 0; i < 500; i++) {
+
+    @Test
+    public void after_a_shitload_of_days() throws Exception {
+        for (int i = 0; i < 500; i++) {
             inn.updateQuality();
         }
-         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
-         assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
-         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-         assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+        assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+        assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
     }
-    
+
     Random rand = new Random(3456789);
-    @Test public void 
-    backstage_pass() throws Exception {
+
+    @Test
+    public void backstage_pass() throws Exception {
+        Inn inn = innWithABunchOfBackstagePasses();
+        updateQualityManyTimes(inn);
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+        assertThat(qualities).containsOnly(30, 48, 45, 0, 11, 0, 0, 0, 36, 15, 33, 50, 50, 27, 0, 26, 42, 50, 0, 50, 50, 0, 29, 0, 0, 36, 50, 41, 50,
+                0, 49, 25, 0, 12, 0, 50, 0, 0, 0, 43, 0, 50, 23, 27, 33, 0, 0, 37, 0, 43, 0, 0, 45, 50, 22, 43, 0, 30, 14, 44, 50, 0, 17, 0, 17, 50,
+                16, 50, 19, 44, 0, 0, 37, 34, 0, 0, 0, 50, 0, 29, 40, 50, 50, 47, 0, 0, 47, 0, 26, 11, 26, 16, 0, 50, 0, 0, 0, 35, 0, 50);
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+        assertThat(sellIns).containsOnly(1, 18, -7, 6, 8, 16, -8, 6, 4, -9, 4, -2, -9, 8, 14, 7, 9, -9, 12, 2, -9, 12, -7, 5, -6, -1, -11, 2, -4, 9,
+                4, 15, 13, -4, -4, 12, -7, 9, -4, -7, 4, 0, 11, 6, -8, 3, 17, 12, 9, -4, 13, -5, 10, 4, 14, 6, 14, 1, -5, -3, 15, 11, -2, -6, -2, 2,
+                -11, 17, 10, 18, 2, 14, -8, -5, 1, -1, 0, 14, 7, 9, -3, 2, -9, -1, -6, 5, -5, 8, -5, 11, 3, 17, 17, 13, 5, 11, 16, -3, 6, 11);
+    }
+
+    private void updateQualityManyTimes(Inn inn) {
+        for (int i = 0; i < 11; i++) {
+            inn.updateQuality();
+        }
+    }
+
+    private Inn innWithABunchOfBackstagePasses() {
         List<Item> listOfPasses = new ArrayList<Item>();
         for (int i = 0; i < 100; i++) {
             listOfPasses.add(makeBackstagePass(quality(), sellIn()));
         }
-        Inn inn = new Inn(listOfPasses);
-        for (int i = 0; i < 11; i++) {
-            
-            inn.updateQuality();
-        }
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
-        System.out.println(qualities);
-        assertThat(qualities).containsOnly(30, 48, 45, 0, 11, 0, 0, 0, 36, 15, 33, 50, 50, 27, 0, 26, 42, 50, 0, 50, 50, 0, 29, 0, 0, 36, 50, 41, 50, 0, 49, 25, 0, 12, 0, 50, 0, 0, 0, 43, 0, 50, 23, 27, 33, 0, 0, 37, 0, 43, 0, 0, 45, 50, 22, 43, 0, 30, 14, 44, 50, 0, 17, 0, 17, 50, 16, 50, 19, 44, 0, 0, 37, 34, 0, 0, 0, 50, 0, 29, 40, 50, 50, 47, 0, 0, 47, 0, 26, 11, 26, 16, 0, 50, 0, 0, 0, 35, 0, 50);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-        System.out.println(sellIns);
-        assertThat(sellIns).containsOnly(1, 18, -7, 6, 8, 16, -8, 6, 4, -9, 4, -2, -9, 8, 14, 7, 9, -9, 12, 2, -9, 12, -7, 5, -6, -1, -11, 2, -4, 9, 4, 15, 13, -4, -4, 12, -7, 9, -4, -7, 4, 0, 11, 6, -8, 3, 17, 12, 9, -4, 13, -5, 10, 4, 14, 6, 14, 1, -5, -3, 15, 11, -2, -6, -2, 2, -11, 17, 10, 18, 2, 14, -8, -5, 1, -1, 0, 14, 7, 9, -3, 2, -9, -1, -6, 5, -5, 8, -5, 11, 3, 17, 17, 13, 5, 11, 16, -3, 6, 11);
+        return new Inn(listOfPasses);
     }
 
     private int sellIn() {
