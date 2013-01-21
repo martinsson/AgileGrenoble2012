@@ -26,7 +26,7 @@ public class InnTest {
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(17, 4, 4, 80, 23, 3);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-//        assertThat(sellIns).containsOnly(17, 3, 4, );
+        assertThat(sellIns).containsOnly(7, -1, 2, 0, 12, 0);
          
     }
 
