@@ -6,6 +6,9 @@ import static org.fest.assertions.api.Assertions.extractProperty;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.isNotNull;
 
+import java.util.List;
+import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -50,13 +53,12 @@ public class InnTest {
     
     @Test public void 
     backstage_pass() throws Exception {
-        int quality = 50;
-        int sellIn = 40;
-        Item backstagePass = makeBackstagePass(quality, sellIn);
-        Inn inn = new Inn(asList(backstagePass, makeBackstagePass(30, 25) ));
+        Random qualityseeder = new Random(3456789);
+        List<Item> listOfPasses = asList(makeBackstagePass(qualityseeder.nextInt(50), 40), makeBackstagePass(30, 25) );
+        Inn inn = new Inn(listOfPasses);
         inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
-        assertThat(qualities).containsOnly(quality, 31);
+        assertThat(qualities).containsOnly(20, 31);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
         assertThat(sellIns).containsOnly(39, 24);
     }
