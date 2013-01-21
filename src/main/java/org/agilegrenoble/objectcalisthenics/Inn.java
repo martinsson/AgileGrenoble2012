@@ -1,5 +1,6 @@
 package org.agilegrenoble.objectcalisthenics;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Inn {
@@ -77,4 +78,8 @@ public class Inn {
 			}
 		}
 	}
+
+    public List<Item> getItems() {
+        return items;
+    }
 }
