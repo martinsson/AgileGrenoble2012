@@ -51,8 +51,12 @@ public class InnTest {
     @Test public void 
     backstage_pass() throws Exception {
         Item backstagePass = new Item(Inn.BACKSTAGE_PASS, 40, 50);
-        Inn inn2 = new Inn(asList(backstagePass ));
-        assertThat(inn2).isNotNull();
+        Inn inn = new Inn(asList(backstagePass ));
+        inn.updateQuality();
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+        assertThat(qualities).containsOnly(50);
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+        assertThat(sellIns).containsOnly(39);
     }
 
 }
