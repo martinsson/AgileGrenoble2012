@@ -54,13 +54,21 @@ public class InnTest {
     @Test public void 
     backstage_pass() throws Exception {
         Random rand = new Random(3456789);
-        List<Item> listOfPasses = asList(makeBackstagePass(rand.nextInt(50), rand.nextInt(400)), makeBackstagePass(rand.nextInt(50), 25) );
+        List<Item> listOfPasses = asList(makeBackstagePass(quality(rand), sellIn(rand)), makeBackstagePass(quality(rand), sellIn(rand)) );
         Inn inn = new Inn(listOfPasses);
         inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(20, 27);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-        assertThat(sellIns).containsOnly(371, 24);
+        assertThat(sellIns).containsOnly(371, 282);
+    }
+
+    private int sellIn(Random rand) {
+        return rand.nextInt(400);
+    }
+
+    private int quality(Random rand) {
+        return rand.nextInt(50);
     }
 
     private Item makeBackstagePass(int quality, int sellIn) {
