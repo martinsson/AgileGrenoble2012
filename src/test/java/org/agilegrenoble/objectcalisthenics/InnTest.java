@@ -61,17 +61,33 @@ public class InnTest {
                 makeBackstagePass(quality(), sellIn()), 
                 makeBackstagePass(quality(), sellIn()), 
                 makeBackstagePass(quality(), sellIn()), 
+                makeBackstagePass(quality(), sellIn()), 
+                makeBackstagePass(quality(), sellIn()), 
+                makeBackstagePass(quality(), sellIn()), 
+                makeBackstagePass(quality(), sellIn()), 
+                makeBackstagePass(quality(), sellIn()), 
                 makeBackstagePass(quality(), sellIn()) );
         Inn inn = new Inn(listOfPasses);
         inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
+        inn.updateQuality();
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
-        assertThat(qualities).containsOnly(20, 27, 35, 6, 1, 46, 38);
+        assertThat(qualities).containsOnly(30, 48, 45, 0, 11, 0, 0, 0, 36, 15, 33, 50);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
-        assertThat(sellIns).containsOnly(371, 282, 53, 162, 41, 93, 142);
+        System.out.println(sellIns);
+        assertThat(sellIns).containsOnly(11, 2, 13, -8, 11, -7, -8, -2, 14, 9, 3, 17);
     }
 
     private int sellIn() {
-        return rand.nextInt(400);
+        return rand.nextInt(30);
     }
 
     private int quality() {
