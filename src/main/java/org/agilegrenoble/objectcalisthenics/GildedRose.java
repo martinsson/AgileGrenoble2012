@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GildedRose {
-
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		System.out.println("OMGHAI!");
 		GildedRose gildedRose = new GildedRose();
         gildedRose.updateQuality(gildedRose.makeItems());
 	}
-
-    public static final String BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
 
     public List<Item> makeItems() {
         List<Item> items = new ArrayList<Item>();
@@ -31,7 +28,7 @@ public class GildedRose {
     				&& !items
     						.get(i)
     						.getName()
-    						.equals(GildedRose.BACKSTAGE_PASS)) {
+    						.equals("Backstage passes to a TAFKAL80ETC concert")) {
     			if (items.get(i).getQuality() > 0) {
     				if (!items.get(i).getName()
     						.equals("Sulfuras, Hand of Ragnaros")) {
@@ -45,7 +42,7 @@ public class GildedRose {
     				if (items
     						.get(i)
     						.getName()
-    						.equals(GildedRose.BACKSTAGE_PASS)) {
+    						.equals("Backstage passes to a TAFKAL80ETC concert")) {
     					if (items.get(i).getSellIn() < 11) {
     						if (items.get(i).getQuality() < 50) {
     							items.get(i).setQuality(
@@ -72,7 +69,7 @@ public class GildedRose {
     				if (!items
     						.get(i)
     						.getName()
-    						.equals(GildedRose.BACKSTAGE_PASS)) {
+    						.equals("Backstage passes to a TAFKAL80ETC concert")) {
     					if (items.get(i).getQuality() > 0) {
     						if (!items.get(i).getName()
     								.equals("Sulfuras, Hand of Ragnaros")) {

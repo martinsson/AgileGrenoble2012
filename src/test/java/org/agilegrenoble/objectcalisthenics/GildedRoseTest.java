@@ -89,7 +89,7 @@ public class GildedRoseTest {
     }
 
     private Item makeBackstagePass(int quality, int sellIn) {
-        return new Item(GildedRose.BACKSTAGE_PASS, sellIn, quality);
+        return new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }
 
 }
