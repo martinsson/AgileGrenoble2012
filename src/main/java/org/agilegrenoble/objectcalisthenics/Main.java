@@ -7,11 +7,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("OMGHAI!");
-		Inn inn = makeInn();
-		new Main().updateQuality(inn.items);
+		Main main = new Main();
+        main.updateQuality(main.makeItems());
 	}
 
-    public static Inn makeInn() {
+    public List<Item> makeItems() {
         List<Item> items = new ArrayList<Item>();
 		items.add(new Item("+5 Dexterity Vest", 10, 20));
 		items.add(new Item("Aged Brie", 2, 0));
@@ -19,8 +19,7 @@ public class Main {
 		items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
 		items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
 		items.add(new Item("Conjured Mana Cake", 3, 6));
-		Inn inn = new Inn(items);
-        return inn;
+        return items;
     }
 
     public void updateQuality(List<Item> list) {
@@ -91,10 +90,6 @@ public class Main {
     			}
     		}
     	}
-    }
-
-    public void updateQuality(Inn inn) {
-        updateQuality(inn.items);
     }
 
 }

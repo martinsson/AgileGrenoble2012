@@ -14,41 +14,51 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class InnTest {
-    private Inn inn;
+    private Main main;
+    private List<Item> items;
 
     @Before
     public void setup() {
-        inn = Main.makeInn();
+        main = new Main();
+        items = main.makeItems();
     }
     
     @Test public void 
     after_one_day() throws Exception {
-        inn.main.updateQuality(inn);
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+        aksjdfkjsd();
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items());
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items());
         assertThat(sellIns).containsOnly(9, 1, 4, 0, 14, 2);
+    }
+
+    private List<Item> items() {
+        return items;
+    }
+
+    private void aksjdfkjsd() {
+        main.updateQuality(items);
     }
 
     @Test public void 
     after_three_days() throws Exception {
-        inn.main.updateQuality(inn);
-        inn.main.updateQuality(inn);
-        inn.main.updateQuality(inn);
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+        aksjdfkjsd();
+        aksjdfkjsd();
+        aksjdfkjsd();
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items());
         assertThat(qualities).containsOnly(17, 4, 4, 80, 23, 3);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items());
         assertThat(sellIns).containsOnly(7, -1, 2, 0, 12, 0);
     }
     
     @Test public void 
     after_a_shitload_of_days() throws Exception {
          for (int i = 0; i < 500; i++) {
-            inn.main.updateQuality(inn);
+            aksjdfkjsd();
         }
-         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
+         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items());
          assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
-         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
+         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items());
          assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
     }
     
@@ -69,7 +79,7 @@ public class InnTest {
 
     private void updateQualityManyTimes(Inn inn) {
         for (int i = 0; i < 11; i++) {
-            inn.main.updateQuality(inn.items);
+            main.updateQuality(inn.items);
         }
     }
 
