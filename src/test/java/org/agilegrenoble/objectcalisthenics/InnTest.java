@@ -23,18 +23,18 @@ public class InnTest {
     
     @Test public void 
     after_one_day() throws Exception {
-        inn.updateQuality();
+        inn.main.updateQuality(inn);
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
         assertThat(sellIns).containsOnly(9, 1, 4, 0, 14, 2);
     }
-    
+
     @Test public void 
     after_three_days() throws Exception {
-        inn.updateQuality();
-        inn.updateQuality();
-        inn.updateQuality();
+        inn.main.updateQuality(inn);
+        inn.main.updateQuality(inn);
+        inn.main.updateQuality(inn);
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
         assertThat(qualities).containsOnly(17, 4, 4, 80, 23, 3);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(inn.getItems());
@@ -44,7 +44,7 @@ public class InnTest {
     @Test public void 
     after_a_shitload_of_days() throws Exception {
          for (int i = 0; i < 500; i++) {
-            inn.updateQuality();
+            inn.main.updateQuality(inn);
         }
          Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(inn.getItems());
          assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
@@ -69,7 +69,7 @@ public class InnTest {
 
     private void updateQualityManyTimes(Inn inn) {
         for (int i = 0; i < 11; i++) {
-            inn.updateQuality();
+            inn.main.updateQuality(inn.items);
         }
     }
 
