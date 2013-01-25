@@ -1,10 +1,7 @@
 package org.agilegrenoble.objectcalisthenics;
 
-import static java.util.Arrays.asList;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.fest.assertions.api.Assertions.extractProperty;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.isNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,56 +10,48 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-public class InnTest {
-    private Main main;
+public class GildedRoseTest {
+    private GildedRose gildedRose;
     private List<Item> items;
+    private Random rand = new Random(3456789);
 
     @Before
     public void setup() {
-        main = new Main();
-        items = main.makeItems();
+        gildedRose = new GildedRose();
+        items = gildedRose.makeItems();
     }
     
     @Test public void 
     after_one_day() throws Exception {
-        aksjdfkjsd();
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items());
+        gildedRose.updateQuality(items);
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items());
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
         assertThat(sellIns).containsOnly(9, 1, 4, 0, 14, 2);
-    }
-
-    private List<Item> items() {
-        return items;
-    }
-
-    private void aksjdfkjsd() {
-        main.updateQuality(items);
     }
 
     @Test public void 
     after_three_days() throws Exception {
-        aksjdfkjsd();
-        aksjdfkjsd();
-        aksjdfkjsd();
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items());
+        gildedRose.updateQuality(items);
+        gildedRose.updateQuality(items);
+        gildedRose.updateQuality(items);
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(17, 4, 4, 80, 23, 3);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items());
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
         assertThat(sellIns).containsOnly(7, -1, 2, 0, 12, 0);
     }
     
     @Test public void 
     after_a_shitload_of_days() throws Exception {
          for (int i = 0; i < 500; i++) {
-            aksjdfkjsd();
+            gildedRose.updateQuality(items);
         }
-         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items());
+         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
          assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
-         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items());
+         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
          assertThat(sellIns).containsOnly(-490, -498, -495, 0, -485, -497);
     }
     
-    Random rand = new Random(3456789);
     @Test public void 
     backstage_pass() throws Exception {
         List<Item> items2 = aBunchOfBackstagePasses();
@@ -79,7 +68,7 @@ public class InnTest {
 
     private void updateQualityManyTimes(List<Item> list) {
         for (int i = 0; i < 11; i++) {
-            main.updateQuality(list);
+            gildedRose.updateQuality(list);
         }
     }
 
@@ -100,8 +89,7 @@ public class InnTest {
     }
 
     private Item makeBackstagePass(int quality, int sellIn) {
-        Item backstagePass = new Item(Main.BACKSTAGE_PASS, sellIn, quality);
-        return backstagePass;
+        return new Item(GildedRose.BACKSTAGE_PASS, sellIn, quality);
     }
 
 }

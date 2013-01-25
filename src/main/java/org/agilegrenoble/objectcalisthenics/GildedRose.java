@@ -3,12 +3,12 @@ package org.agilegrenoble.objectcalisthenics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class GildedRose {
 
 	public static void main(String[] args) {
 		System.out.println("OMGHAI!");
-		Main main = new Main();
-        main.updateQuality(main.makeItems());
+		GildedRose gildedRose = new GildedRose();
+        gildedRose.updateQuality(gildedRose.makeItems());
 	}
 
     public static final String BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert";
@@ -31,7 +31,7 @@ public class Main {
     				&& !items
     						.get(i)
     						.getName()
-    						.equals(Main.BACKSTAGE_PASS)) {
+    						.equals(GildedRose.BACKSTAGE_PASS)) {
     			if (items.get(i).getQuality() > 0) {
     				if (!items.get(i).getName()
     						.equals("Sulfuras, Hand of Ragnaros")) {
@@ -45,7 +45,7 @@ public class Main {
     				if (items
     						.get(i)
     						.getName()
-    						.equals(Main.BACKSTAGE_PASS)) {
+    						.equals(GildedRose.BACKSTAGE_PASS)) {
     					if (items.get(i).getSellIn() < 11) {
     						if (items.get(i).getQuality() < 50) {
     							items.get(i).setQuality(
@@ -72,7 +72,7 @@ public class Main {
     				if (!items
     						.get(i)
     						.getName()
-    						.equals(Main.BACKSTAGE_PASS)) {
+    						.equals(GildedRose.BACKSTAGE_PASS)) {
     					if (items.get(i).getQuality() > 0) {
     						if (!items.get(i).getName()
     								.equals("Sulfuras, Hand of Ragnaros")) {
