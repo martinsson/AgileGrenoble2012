@@ -15,11 +15,13 @@ public class GildedRoseTest {
     private GildedRose gildedRose;
     private List<Item> items;
     private Random rand = new Random(3456789);
+    private Stock stock;
 
     @Before
     public void setup() {
         gildedRose = new GildedRose();
         items = gildedRose.makeItems();
+        stock = new Stock(items);
     }
     
     @Test public void 
@@ -43,7 +45,6 @@ public class GildedRoseTest {
     }
 
     private void updateQuality(List<Item> items) {
-        Stock stock = new Stock(items);
         stock.updateQuality();
     }
     
@@ -73,8 +74,9 @@ public class GildedRoseTest {
     }
 
     private void updateQualityManyTimes(List<Item> list) {
+        Stock stock = new Stock(list);
         for (int i = 0; i < 11; i++) {
-            updateQuality(list);
+            stock.updateQuality();
         }
     }
 

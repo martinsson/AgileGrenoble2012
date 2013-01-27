@@ -7,8 +7,7 @@ public class GildedRose {
     public static void main(String[] args) {
 		System.out.println("OMGHAI!");
 		GildedRose gildedRose = new GildedRose();
-		List<Item> items = gildedRose.makeItems();
-		Stock stock = new Stock(items);
+		Stock stock = new Stock(gildedRose.makeItems());
         stock.updateQuality();
 	}
     
