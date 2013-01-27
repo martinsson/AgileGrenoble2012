@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.agilegrenoble.objectcalisthenics.GildedRose.Stock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,6 +43,7 @@ public class GildedRoseTest {
     }
 
     private void updateQuality(List<Item> items) {
+        Stock stock = new Stock(items);
         gildedRose.updateQuality(items);
     }
     
