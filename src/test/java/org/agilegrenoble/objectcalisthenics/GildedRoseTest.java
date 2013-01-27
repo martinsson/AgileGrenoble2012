@@ -23,7 +23,7 @@ public class GildedRoseTest {
     
     @Test public void 
     after_one_day() throws Exception {
-        gildedRose.updateQuality(items);
+        updateQuality(items);
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
@@ -32,19 +32,23 @@ public class GildedRoseTest {
 
     @Test public void 
     after_three_days() throws Exception {
-        gildedRose.updateQuality(items);
-        gildedRose.updateQuality(items);
-        gildedRose.updateQuality(items);
+        updateQuality(items);
+        updateQuality(items);
+        updateQuality(items);
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(17, 4, 4, 80, 23, 3);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
         assertThat(sellIns).containsOnly(7, -1, 2, 0, 12, 0);
     }
+
+    private void updateQuality(List<Item> items) {
+        gildedRose.updateQuality(items);
+    }
     
     @Test public void 
     after_a_shitload_of_days() throws Exception {
          for (int i = 0; i < 500; i++) {
-            gildedRose.updateQuality(items);
+            updateQuality(items);
         }
          Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
          assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
@@ -68,7 +72,7 @@ public class GildedRoseTest {
 
     private void updateQualityManyTimes(List<Item> list) {
         for (int i = 0; i < 11; i++) {
-            gildedRose.updateQuality(list);
+            updateQuality(list);
         }
     }
 
