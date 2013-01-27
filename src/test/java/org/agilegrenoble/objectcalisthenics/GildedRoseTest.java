@@ -13,15 +13,13 @@ import org.junit.Test;
 
 public class GildedRoseTest {
     private GildedRose gildedRose;
-    private List<Item> items;
     private Random rand = new Random(3456789);
     private Stock stock;
 
     @Before
     public void setup() {
         gildedRose = new GildedRose();
-        items = gildedRose.makeItems();
-        stock = new Stock(items);
+        stock = new Stock(gildedRose.makeItems());
     }
     
     @Test public void 
