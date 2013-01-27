@@ -9,7 +9,7 @@ public class GildedRose {
 		GildedRose gildedRose = new GildedRose();
 		List<Item> items = gildedRose.makeItems();
 		Stock stock = new Stock(items);
-        gildedRose.updateQuality(items, stock);
+        gildedRose.updateQuality(stock);
 	}
     
     public static class Stock {
@@ -37,7 +37,7 @@ public class GildedRose {
         return items;
     }
 
-    public void updateQuality(List<Item> list, Stock stock) {
+    public void updateQuality(Stock stock) {
     	List<Item> items = stock.getItems();
         for (int i = 0; i < items.size(); i++) {
     		if (!items.get(i).getName().equals("Aged Brie")
