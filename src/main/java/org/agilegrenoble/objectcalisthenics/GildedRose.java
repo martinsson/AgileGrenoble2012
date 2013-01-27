@@ -7,11 +7,18 @@ public class GildedRose {
     public static void main(String[] args) {
 		System.out.println("OMGHAI!");
 		GildedRose gildedRose = new GildedRose();
-		Stock stock = new Stock();
-        gildedRose.updateQuality(gildedRose.makeItems());
+		List<Item> items = gildedRose.makeItems();
+		Stock stock = new Stock(items);
+        gildedRose.updateQuality(items);
 	}
     
     public static class Stock {
+
+        private List<Item> items;
+
+        public Stock(List<Item> items) {
+            this.items = items;
+        }
         
     }
 
