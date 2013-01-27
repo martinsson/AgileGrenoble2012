@@ -20,12 +20,7 @@ public class GildedRose {
             this.items = items;
         }
 
-        public List<Item> getItems() {
-            return items;
-        }
-
         public void updateQuality() {
-        	List<Item> items = getItems();
             for (int i = 0; i < items.size(); i++) {
         		if (!items.get(i).getName().equals("Aged Brie")
         				&& !items
