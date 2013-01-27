@@ -44,7 +44,7 @@ public class GildedRoseTest {
 
     private void updateQuality(List<Item> items) {
         Stock stock = new Stock(items);
-        gildedRose.updateQuality(stock);
+        stock.updateQuality();
     }
     
     @Test public void 
