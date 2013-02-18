@@ -3,6 +3,7 @@ package org.agilegrenoble.objectcalisthenics;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.fest.assertions.api.Assertions.extractProperty;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -26,6 +27,14 @@ public class GildedRoseTest {
     @Test public void 
     after_one_day() throws Exception {
         gildedRose.updateQuality(items);
+
+        Iterable<String> itemNames = extractProperty("name", String.class).from(items);
+        assertThat(itemNames ).containsOnly("+5 Dexterity Vest", 
+                                            "Aged Brie", 
+                                            "Elixir of the Mongoose", 
+                                            "Sulfuras, Hand of Ragnaros", 
+                                            "Backstage passes to a TAFKAL80ETC concert", 
+                                            "Conjured Mana Cake");
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(19, 1, 6, 80, 21, 5);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
@@ -37,6 +46,14 @@ public class GildedRoseTest {
         gildedRose.updateQuality(items);
         gildedRose.updateQuality(items);
         gildedRose.updateQuality(items);
+
+        Iterable<String> itemNames = extractProperty("name", String.class).from(items);
+        assertThat(itemNames ).containsOnly("+5 Dexterity Vest", 
+                                            "Aged Brie", 
+                                            "Elixir of the Mongoose", 
+                                            "Sulfuras, Hand of Ragnaros", 
+                                            "Backstage passes to a TAFKAL80ETC concert", 
+                                            "Conjured Mana Cake");
         Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(17, 4, 4, 80, 23, 3);
         Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
@@ -48,6 +65,14 @@ public class GildedRoseTest {
          for (int i = 0; i < 500; i++) {
             gildedRose.updateQuality(items);
          }
+         
+         Iterable<String> itemNames = extractProperty("name", String.class).from(items);
+         assertThat(itemNames ).containsOnly("+5 Dexterity Vest", 
+                                             "Aged Brie", 
+                                             "Elixir of the Mongoose", 
+                                             "Sulfuras, Hand of Ragnaros", 
+                                             "Backstage passes to a TAFKAL80ETC concert", 
+                                             "Conjured Mana Cake");
          Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
          assertThat(qualities).containsOnly(0, 50, 0, 80, 0, 0);
          Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
