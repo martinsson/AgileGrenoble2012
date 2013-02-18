@@ -26,7 +26,7 @@ public class GildedRoseTest {
     
     @Test public void 
     after_one_day() throws Exception {
-        repeatUpdateQuality(items, 1);
+        repeatUpdateQuality(1);
 
         Iterable<String> itemNames = extractProperty("name", String.class).from(items);
         assertThat(itemNames ).containsOnly("+5 Dexterity Vest", 
@@ -43,7 +43,7 @@ public class GildedRoseTest {
 
     @Test public void 
     after_three_days() throws Exception {
-        repeatUpdateQuality(items, 3);
+        repeatUpdateQuality(3);
 
         Iterable<String> itemNames = extractProperty("name", String.class).from(items);
         assertThat(itemNames ).containsOnly("+5 Dexterity Vest", 
@@ -60,7 +60,7 @@ public class GildedRoseTest {
     
     @Test public void 
     after_a_shitload_of_days() throws Exception {
-         repeatUpdateQuality(items, 500);
+         repeatUpdateQuality(500);
          
          Iterable<String> itemNames = extractProperty("name", String.class).from(items);
          assertThat(itemNames ).containsOnly("+5 Dexterity Vest", 
@@ -77,21 +77,21 @@ public class GildedRoseTest {
     
     @Test public void 
     backstage_pass_golden_copy() throws Exception {
-        List<Item> backstagePasses = aBunchOfBackstagePasses();
-        repeatUpdateQuality(backstagePasses, 11);
-        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(backstagePasses);
+        items = aBunchOfBackstagePasses();
+        repeatUpdateQuality(11);
+        Iterable<Integer> qualities = extractProperty("quality", Integer.class).from(items);
         assertThat(qualities).containsOnly(30, 48, 45, 0, 11, 0, 0, 0, 36, 15, 33, 50, 50, 27, 0, 26, 42, 50, 0, 50, 50, 0, 29, 0, 0, 36, 50, 41, 50,
                 0, 49, 25, 0, 12, 0, 50, 0, 0, 0, 43, 0, 50, 23, 27, 33, 0, 0, 37, 0, 43, 0, 0, 45, 50, 22, 43, 0, 30, 14, 44, 50, 0, 17, 0, 17, 50,
                 16, 50, 19, 44, 0, 0, 37, 34, 0, 0, 0, 50, 0, 29, 40, 50, 50, 47, 0, 0, 47, 0, 26, 11, 26, 16, 0, 50, 0, 0, 0, 35, 0, 50);
-        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(backstagePasses);
+        Iterable<Integer> sellIns = extractProperty("sellIn", Integer.class).from(items);
         assertThat(sellIns).containsOnly(1, 18, -7, 6, 8, 16, -8, 6, 4, -9, 4, -2, -9, 8, 14, 7, 9, -9, 12, 2, -9, 12, -7, 5, -6, -1, -11, 2, -4, 9,
                 4, 15, 13, -4, -4, 12, -7, 9, -4, -7, 4, 0, 11, 6, -8, 3, 17, 12, 9, -4, 13, -5, 10, 4, 14, 6, 14, 1, -5, -3, 15, 11, -2, -6, -2, 2,
                 -11, 17, 10, 18, 2, 14, -8, -5, 1, -1, 0, 14, 7, 9, -3, 2, -9, -1, -6, 5, -5, 8, -5, 11, 3, 17, 17, 13, 5, 11, 16, -3, 6, 11);
     }
 
-    private void repeatUpdateQuality(List<Item> list, int times) {
+    private void repeatUpdateQuality(int times) {
         for (int i = 0; i < times; i++) {
-            gildedRose.updateQuality(list);
+            gildedRose.updateQuality(items);
         }
     }
 
