@@ -5,7 +5,6 @@ import java.util.List;
 
 public class GildedRose {
     public static void main(String[] args) {
-		System.out.println("OMGHAI!");
 		GildedRose gildedRose = new GildedRose();
         gildedRose.updateQuality(gildedRose.makeItems());
 	}
