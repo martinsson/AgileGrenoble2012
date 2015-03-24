@@ -36,4 +36,5 @@ public class UnchangeableQuality implements Quality {
     public void resetToZero() {
     }
 
+    // TODO maybe interface too big
 }

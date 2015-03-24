@@ -21,6 +21,9 @@ public class Main {
 		items.add(forge.anItem_thatDecaysWithTime("+5 Dexterity Vest", 10, 20));
 		items.add(forge.anItem_thatDecaysWithTime("Elixir of the Mongoose", 5, 7));
 		items.add(new NormalItem("Conjured Mana Cake", new DecayWithAge(3), new Between0and50Quality(6)));
+		// TODO conjured item is 1st a different type, maybe a new class, also decays twice as fast
+		
+		// found inconsistency
 		
 		new Inn(items).updateQuality();
 	}
