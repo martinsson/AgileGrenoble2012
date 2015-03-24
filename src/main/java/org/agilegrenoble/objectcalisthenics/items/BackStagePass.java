@@ -9,14 +9,4 @@ public class BackStagePass extends Item{
         super("Backstage passes to a TAFKAL80ETC concert", quality, sellIn);
     }
 
-
-    public int getQuality() {
-        return quality.getQuality();
-    }
-
-    @Override
-    public void updateQuality() {
-        ageing.advanceOneDay(quality);
-        
-    }
 }

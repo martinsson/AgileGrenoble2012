@@ -30,7 +30,7 @@ public class InnTest {
 		Random random = new Random();
 		int nbItems = random.nextInt(20) + 1; 
 		List<Item> items = new ArrayList<Item>();
-		NormalItem currentItem = null;
+		Item currentItem = null;
 		for (int i = 0; i < nbItems; i++) {
 			currentItem = Mockito.mock(NormalItem.class);
 			items.add(currentItem);

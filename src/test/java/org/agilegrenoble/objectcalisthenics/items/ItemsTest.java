@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class NormalItemTest {
+public class ItemsTest {
 
 	private Random random = null;
 	private ItemForge forge = new ItemForge();
@@ -251,10 +251,14 @@ public class NormalItemTest {
 
 		for (int day = startOfPeriod; day > endOfPeriod; --day) {
 			backstage.updateQuality();
-			qualityInThePeriod.add(backstage.getQuality());
+			qualityInThePeriod.add(getQualityValue(backstage));
 		}
 
 		return qualityInThePeriod;
+	}
+
+	protected int getQualityValue(BackStagePass backstage) {
+	    return backstage.quality.getQuality();
 	}
 
 	private Item itemThatDecays(String itemName, int startAge, Quality startquality) {

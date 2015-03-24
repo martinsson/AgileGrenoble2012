@@ -8,12 +8,4 @@ public class NormalItem extends Item {
     public NormalItem(String name, Ageing ageing, Quality quality) {
         super(name, quality, ageing);
 	}
-
-    /**
-	 * Update quality for the item
-	 * 
-	 */
-    public void updateQuality() {
-        ageing.advanceOneDay(quality);
-    }
 }

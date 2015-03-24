@@ -14,9 +14,15 @@ public abstract class Item {
         this.ageing = sellIn;
     }
 
-    public abstract void updateQuality();
-
     protected int getDayCountDown() {
         return ageing.getDayCountDown();
+    }
+
+    public void updateQuality() {
+        ageing.advanceOneDay(quality);
+    }
+
+    public int getQualityValue() {
+        return quality.getQuality();
     }
 }
