@@ -2,12 +2,12 @@ package org.agilegrenoble.objectcalisthenics.items;
 
 import org.agilegrenoble.objectcalisthenics.Ageing.Ageing;
 import org.agilegrenoble.objectcalisthenics.Ageing.NoAgeing;
-import org.agilegrenoble.objectcalisthenics.quality.Between0and50Quality;
+import org.agilegrenoble.objectcalisthenics.quality.UnchangeableQuality;
 
 public class Sulfuras extends NormalItem {
 
     public Sulfuras() {
-        this(new NoAgeing(0));
+        this(new NoAgeing(0)); // TODO 0 is surprise, NoAging is here but could be in factory?
     }
     
     public Sulfuras(int startSellIn) {
@@ -15,8 +15,8 @@ public class Sulfuras extends NormalItem {
     }
     
     private Sulfuras(Ageing sellIn) {
-        super("Sulfuras, Hand of Ragnaros", sellIn, new Between0and50Quality(80));
+	// TODO this is legendary item
+        super("Sulfuras, Hand of Ragnaros", sellIn, new UnchangeableQuality(80));
     }
-    
 
 }

@@ -13,7 +13,8 @@ import org.agilegrenoble.objectcalisthenics.quality.Quality;
 public class ItemForge {
 
     public Item anAgedBrie_thatImprovesWithTime(int daysUntilBestBeforeDate, int startQuality) {
-        return anAgedBrie_thatImprovesWithTime(daysUntilBestBeforeDate, new Between0and50Quality(startQuality));
+        return anAgedBrie_thatImprovesWithTime(daysUntilBestBeforeDate, 
+        	new Between0and50Quality(startQuality));
     }
 
     public Item anAgedBrie_thatImprovesWithTime(int daysUntilBestBeforeDate, Quality quality) {
@@ -26,7 +27,8 @@ public class ItemForge {
     }
 
     public Item anItem_thatDecaysWithTime(String name, int daysUntilBestBeforeDate, int startQuality) {
-        return anItem_thatDecaysWithTime(name, daysUntilBestBeforeDate, new Between0and50Quality(startQuality));
+        return anItem_thatDecaysWithTime(name, daysUntilBestBeforeDate, 
+        	new Between0and50Quality(startQuality));
     }
 
     public Item anItem_thatDecaysWithTime(String itemName, int startAge, Quality quality) {
@@ -35,10 +37,12 @@ public class ItemForge {
     }
     
     public BackStagePass aBackstagePass_thatImprovesUntilTheConcertDate(int daysUntilConcert, int startQuality) {
-        return aBackstagePass_thatImprovesUntilTheConcertDate(daysUntilConcert, new Between0and50Quality(startQuality));
+        return aBackstagePass_thatImprovesUntilTheConcertDate(daysUntilConcert, 
+        	new Between0and50Quality(startQuality));
     }
     public BackStagePass aBackstagePass_thatImprovesUntilTheConcertDate(int daysUntilConcert, Quality quality) {
-        return new BackStagePass(quality, new BackStagePassAgeing(daysUntilConcert));
+        return new BackStagePass(quality, 
+        	new BackStagePassAgeing(daysUntilConcert));
     }
 
 

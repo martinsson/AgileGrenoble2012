@@ -13,6 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("OMGHAI!");
 		ItemForge forge = new ItemForge();
+		
 		List<Item> items = new ArrayList<Item>();
 		items.add(forge.anAgedBrie_thatImprovesWithTime(2, 0));
 		items.add(forge.aSulfuras_isAMagicItemThatNeverChanges());
@@ -20,6 +21,7 @@ public class Main {
 		items.add(forge.anItem_thatDecaysWithTime("+5 Dexterity Vest", 10, 20));
 		items.add(forge.anItem_thatDecaysWithTime("Elixir of the Mongoose", 5, 7));
 		items.add(new NormalItem("Conjured Mana Cake", new DecayWithAge(3), new Between0and50Quality(6)));
+		
 		new Inn(items).updateQuality();
 	}
 	
